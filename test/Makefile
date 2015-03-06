@@ -1,6 +1,9 @@
-.PHONY: all run clean
-all run clean: dynamic shared static
+TARGETS:=all run clean
+DIRS:=$(wildcard */)
 
-.PHONY: dynamic shared static
-dynamic shared static:
+.PHONY: $(TARGETS)
+$(TARGETS): $(DIRS)
+
+.PHONY: $(DIRS)
+$(DIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
