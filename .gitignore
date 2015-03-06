@@ -1,0 +1,5 @@
+*.o
+*.so
+.*.lock
+*.a
+runHello
