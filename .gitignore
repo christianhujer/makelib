@@ -1,5 +1,6 @@
-*.o
-*.so
-.*.lock
 *.a
+.help.mak
+.*.lock
+*.o
 runHello
+*.so
