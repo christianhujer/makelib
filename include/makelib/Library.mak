@@ -17,14 +17,26 @@ CFLAGS.so:=-fPIC
 ## Additional LDFLAGS used when linking a shared object.
 LDFLAGS.so:=-shared
 
+## Additional LDFLAGS used when linking a DLL.
+LDFLAGS.dll:=-Wl --export-all-symbols -Wl --add-stdcall-alias
+
 ## Linker for shared object.
 LINK.so=$(LINK.o)
+
+## Linker for DLL.
+LINK.dll=$(LINK.o)
 
 %.so: LDFLAGS+=$(LDFLAGS.so)
 %.so: CFLAGS+=$(CFLAGS.so)
 
 %.so:
 	$(LINK.so) $^ -o $@
+
+$.dll: LDFLAGS+-$(LDFLAGS.dll)
+%.dll: CFLAGS+=$(CFLAGS.dll)
+
+%.dll:
+	$(LINK.dll) $^ -o $@
 
 .PHONY: clean
 clean: cleanLib
