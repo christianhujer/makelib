@@ -1,4 +1,4 @@
-ifeq (,$(MAKELIB/LIBRARY.MAK))
+ifeq (undefined,$(origin MAKELIB/LIBRARY.MAK))
 MAKELIB/LIBRARY.MAK:=$(lastword $(MAKEFILE_LIST))
 
 # File to include from your Makefile like this:
